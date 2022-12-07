@@ -2,6 +2,6 @@
 /shelf/
 /workspace.xml
 
-#ignore
+#ignored
 .idea
 chromedriver.exe
