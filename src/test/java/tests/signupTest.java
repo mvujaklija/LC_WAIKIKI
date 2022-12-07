@@ -1,16 +1,10 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import pages.SignupPage;
 import pages.Strings;
-import java.time.Duration;
-
+import org.openqa.selenium.chrome.ChromeOptions;
 
 /**
  * TEST FOR SIGNUP TO LC WAIKIKI
@@ -26,8 +20,9 @@ import java.time.Duration;
  * 9. Click on the checkbox to receive sms notification about promotions
  * 10. click on the checkbox for accepting general conditions
  * 11. Click on the checkbox to verify that it is human and not robot registering
- * 12. Click on the verification code field and enter verification code
- * 13. click on the button Otvorite nalog
+ * 12. Click on the button Otvorite nalog
+ * 13. Click on the verification code field and enter verification code
+ * 14. Click on the button Potvrdi
  * <p>
  * Expected results
  * 8 User is successfully registered and can go to start shopping by click on button
@@ -45,9 +40,9 @@ public class signupTest extends BaseTest {
 
         try {
 
-            driver.get(Strings.START_PAGE_URL);
+            driver.get(Strings.FIRST_PAGE_URL);
             String currentURL = driver.getCurrentUrl();
-            assert currentURL.equals(Strings.START_PAGE_URL) : "User is on the wrong page. " + "  Actual: " + currentURL;
+            assert currentURL.equals(Strings.FIRST_PAGE_URL) : "User is on the wrong page. " + "  Actual: " + currentURL;
 
             //Text
 
@@ -77,29 +72,27 @@ public class signupTest extends BaseTest {
 
             //Test of check boxes
 
-            text( "Click on checkbox to receive promotions over email that you provided to LC WAIKIKI page");
-            signupPage.emaiCheckBoxlInfo();
+            text( "Click on checkbox to receive promotions over email that you provided to LC WAIKIKI page\n We actually do not click because it is setup by default.");
+
 
             text( "click on checkbox to receive promotion over sms to a number that you provided to LC WAIKIKI page");
-           // signupPage.smsCheckBoxInfo();
+            signupPage.smsCheckBoxInfo();
 
             text( "Click on the checkbox to accept general terms and conditions of LC WAIKIKI page");
             signupPage.generalConditionsCheckBox();
 
-            text( "Click on the checkbox to approve that you are not a robot and that is human registering on LC WAIKIKI page");
-            sleep();
-            signupPage.notABotCheckBox();
+            signupPage.notABot();
 
             text( "Click on the button Otvorite nalog");
-            sleep();
-            signupPage.confirmButton();
+            signupPage.confirmRegistrationButton();
 
             //Waiting for verification code and WE NEED TO ENTER IT MANUALY BECAUSE IT IS COMING TO PHONE AND IT IS RANDOM
 
             text( "Entering verification code");
-            WebElement firstResult = new WebDriverWait(driver, Duration.ofSeconds(30))
-                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//input [ @id = 'activationCode135 ym-disable-keys TLeaf-Mask valid' ]")));
-            signupPage.confirmButton();
+            signupPage.verificationCode();
+
+            text( "Confirming verification code");
+            signupPage.verificationCodeConfirm();
 
             text( "User is registered successfully and can go to shopping by clicking button Zapocnite kupovinu");
             signupPage.startShopping();
@@ -107,22 +100,10 @@ public class signupTest extends BaseTest {
 
         } finally {
 
-            driver.quit();
+            // driver.quit();
 
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

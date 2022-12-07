@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * 8 User is successfully redirected to appropriate page according to the icon that is clicked
  */
 
-public class socialMediaTest extends BaseTest {
+public class socialMediaTest extends  BaseTest {
 
     @Test
 
@@ -38,7 +38,7 @@ public class socialMediaTest extends BaseTest {
 
         try {
 
-            driver.get(Strings.START_PAGE_URL);
+            driver.get(Strings.FIRST_PAGE_URL);
 
 
 
@@ -103,5 +103,4 @@ public class socialMediaTest extends BaseTest {
         }
 
     }
-
 }

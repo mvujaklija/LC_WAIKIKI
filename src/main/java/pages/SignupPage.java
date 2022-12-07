@@ -1,6 +1,5 @@
 package pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class SignupPage {
@@ -37,23 +35,21 @@ public class SignupPage {
     @FindBy ( xpath = "//div[ @class='input-checkbox' ] //div[ @class='icheckbox' ]" )
     WebElement generalConditionsCheckBox;
 
-    @FindBy ( xpath ="//div[@id='container']" )
-    WebElement confirmRegistrationButton;
+    @FindBy ( xpath = "//*[normalize-space( ) = 'Otvorite nalog']" )
+    WebElement openAccountButton;
 
     @FindBy ( xpath = "//input [ @id = 'activationCode135 ym-disable-keys TLeaf-Mask valid' ]" )
     WebElement verificationCode;
 
-    @FindBy ( xpath =  "//a[@class='button bc-blue register-button-link submit-button'][normalize-space()='Potvrdi']")
+    @FindBy ( xpath =  "//*[normalize-space( ) = 'Potvrdi']")
     WebElement confirmVerificationCode;
 
     @FindBy ( xpath = "//a [ @class = 'button bc-blue bw200 center go-shopping' ]")
     WebElement startShopping;
 
-
     //Invoking Chrome driver
 
     public ChromeDriver driver = null;
-
 
     //Constructor
 
@@ -64,130 +60,127 @@ public class SignupPage {
 
     }
 
-        //Methods
+    //Methods
 
-        /**
-         * THIS Method give user options for signup and sign in on page of LC WAIKIKI
-         */
+    /**
+     * THIS Method give user options for signup and sign in on page of LC WAIKIKI
+     */
 
-        public void choseProfileIcon() {
+    public void choseProfileIcon() {
 
-            assert profileIcon.isDisplayed( ) : "Profile icon is not present. Expected to be there";
+        assert profileIcon.isDisplayed( ) : "Profile icon is not present. Expected to be there";
 
-            Actions action = new Actions(driver);
-            action.moveToElement(profileIcon).perform();
+        Actions action = new Actions(driver);
+        action.moveToElement(profileIcon).perform();
 
-        }
+    }
 
-        /**
-         * THIS Method redirects user to signup page of LC WAIKIKI
-         */
+    /**
+     * THIS Method redirects user to signup page of LC WAIKIKI
+     */
 
-        public void choseSignUpButton( ) {
+    public void choseSignUpButton( ) {
 
-            signUpButton.click( );
+        signUpButton.click( );
 
-        }
+    }
 
     /**
      * THIS Method input user email to signup page of LC WAIKIKI
      */
 
-        public void inputEmail( ) {
+    public void inputEmail( ) {
 
-            inputEmail.click( );
+        inputEmail.click( );
 
-            inputEmail.sendKeys( Strings.EMAIL_FOR_SIGNUP );
+        inputEmail.sendKeys( Strings.EMAIL_FOR_SIGNUP );
 
-        }
+    }
 
     /**
      * THIS Method input user password to signup page of LC WAIKIKI
      */
 
-        public void inputPassword( ) {
+    public void inputPassword( ) {
 
-            inputPassword.click( );
+        inputPassword.click( );
 
-            inputPassword.sendKeys( Strings.PASSWORD_FOR_SIGNUP );
+        inputPassword.sendKeys( Strings.PASSWORD_FOR_SIGNUP );
 
-        }
+    }
 
     /**
      * THIS Method input user phone number to signup page of LC WAIKIKI
      */
 
-        public void inputPhoneNumber( ) {
+    public void inputPhoneNumber( ) {
 
-            inputPhoneNumber.click();
+        inputPhoneNumber.click( );
 
-            inputPhoneNumber.sendKeys( Strings.PHONE_NUMBER_FOR_SIGNUP);
+        inputPhoneNumber.sendKeys( Strings.PHONE_NUMBER_FOR_SIGNUP);
 
-        }
+    }
 
     /**
      * THIS Method click on check box to receive sms info from LC WAIKIKI
      */
 
-        public void smsCheckBoxInfo( ) {
+    public void smsCheckBoxInfo( ) {
 
-            smsCheckBox.click();
+        smsCheckBox.click( );
 
-        }
+    }
 
     /**
      * THIS Method click on check box to general conditions and terms from LC WAIKIKI
      */
 
-        public void generalConditionsCheckBox() {
+    public void generalConditionsCheckBox( ) {
 
-            generalConditionsCheckBox.click();
+        generalConditionsCheckBox.click( );
 
-        }
+    }
 
     /**
-     * THIS click on check box to verify that it is human and not a bot for registering on LC WAIKIKI
+     * THIS Method click on check box to verify that it is human registering on LC WAIKIKI
      */
 
-         public void notABotCheckBox() {
+    public void notABot( ) {
 
-             //MET from NET :) to avoid recaptcha
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds( 15 ) );
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@name,'a-') and starts-with (@src, 'https://www.google.com/recaptcha')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div [ @class =  'recaptcha-checkbox-border']"))).click();
 
-             WebDriverWait wait = new WebDriverWait( driver, Duration.ofSeconds(25));
-             wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt
-             (By.xpath("//iframe [ starts-with( @name, 'a-') and starts-with( @src, 'https://www.google.com/recaptcha') ]" )));
-             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div [ @class = 'recaptcha-checkbox-border' ]"))).click();
-
-         }
+    }
 
     /**
      * THIS Method confirms entered data and submit user data to page of LC WAIKIKI
      */
 
-        public void confirmRegistrationButton( ) {
+    public void confirmRegistrationButton( ) {
 
-            confirmRegistrationButton.click();
+        openAccountButton.click( );
 
-        }
+    }
 
     /**
      * THIS Method input verification code that user get on provided phone number to LC WAIKIKI
      */
 
-        public void verificationCode( ) {
+    public void verificationCode( ) {
 
-            verificationCode.sendKeys(Strings.VERIFICATION_CODE);
+        verificationCode.sendKeys( Strings.VERIFICATION_CODE );
 
-        }
+    }
 
     /**
      * THIS Method click on the button POTVRDI to send verification code that user get on provided phone number to LC WAIKIKI
      */
 
-    public void confirmVerificationCode( ) {
+    public void verificationCodeConfirm( ) {
 
-        WebDriverWait wait = new WebDriverWait( driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='button bc-blue register-button-link submit-button'][normalize-space()='Potvrdi']")));
+        WebDriverWait wait = new WebDriverWait( driver, Duration.ofSeconds( 5 ) );
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//[normalize-space()='Potvrdi']")));
         confirmVerificationCode.click();
     }
 
@@ -195,14 +188,9 @@ public class SignupPage {
      * THIS Method confirms entered data and register user on page of LC WAIKIKI
      */
 
-        public void startShopping( ) {
+    public void startShopping( ) {
 
-
-
-            startShopping.click( );
+        startShopping.click( );
 
     }
-
-
-
 }

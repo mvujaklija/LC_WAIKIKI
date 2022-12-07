@@ -90,5 +90,4 @@ public class SocialMedia {
     public static void text(String txt) { System.out.println(txt);
 
     }
-
 }
