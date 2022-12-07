@@ -11,6 +11,7 @@ public class Strings {
     public static final String APROVE_REGISTRATION_PAGE_URL = "https://www.lcwaikiki.rs/sr-RS/RS/register-approve#";
     public static final String MAIN_PAGE_URL = "https://www.lcwaikiki.rs/sr-RS/RS";
 
+    //Iframe URL-s
 
 
     //Login credentials
@@ -23,4 +24,5 @@ public class Strings {
     public static final String EMAIL_FOR_SIGNUP = "mvujaklija1982@gmail.com";
     public static final String PASSWORD_FOR_SIGNUP = "Lukicamukica2018+@";
     public static final String PHONE_NUMBER_FOR_SIGNUP = "60561666";
+    public static final String VERIFICATION_CODE = "21481";
 }
