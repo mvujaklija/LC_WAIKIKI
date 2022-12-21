@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+
 public class BaseTest {
 
     public ChromeDriver openChromeDriver() {
@@ -12,7 +13,7 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
 
         options.addArguments(new String[]{"--user-data-dir=C:/Users/Milan Vujaklija/AppData/Local/Google/Chrome/User Data"});
-        options.addArguments(new String[]{"--profile-directory=Profile 1"});
+        options.addArguments(new String[]{"--profile-directory=Profile 2"});
         options.addArguments(new String[]{"--start-maximized"});
         options.addArguments(new String[]{"--ignore-certificate-errors"});
         options.addArguments(new String[]{"--disable-popup-blocking"});
@@ -25,7 +26,23 @@ public class BaseTest {
 
     public void sleep() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(4000);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void sleepForCode () {
+        try {
+            Thread.sleep(5000);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void sleepForReCAPTCHA () {
+        try {
+            Thread.sleep(60000);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -28,7 +28,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
  * 8 User is successfully registered and can go to start shopping by click on button
  */
 
-public class signupTest extends BaseTest {
+public class signUpTestTry extends BaseTest{
 
     @Test
 
@@ -50,60 +50,69 @@ public class signupTest extends BaseTest {
 
             //Test of Otvorite nalog
 
-            text( "Select profile icon");
-            SignupPage signupPage  = new SignupPage( driver );
+            text("Select profile icon");
+            SignupPage signupPage = new SignupPage(driver);
             signupPage.choseProfileIcon();
 
             //Test of entering data and registering on the page LC WAIKIKI
 
-            text( "Click on the option OTVORITE NALOG");
+            text("Click on the option OTVORITE NALOG");
             signupPage.choseSignUpButton();
             String currentURL1 = driver.getCurrentUrl();
             assert currentURL1.equals(Strings.REGISTER_PAGE_URL) : "User is on the wrong page. " + "  Actual: " + currentURL;
 
-            text( "Input email that you use to register and login to LC WAIKIKI page");
+            text("Input email that you use to register and login to LC WAIKIKI page");
+
             signupPage.inputEmail();
 
-            text( "Input password that you use to register and login to LC WAIKIKI page");
+            text("Input password that you use to register and login to LC WAIKIKI page");
+
             signupPage.inputPassword();
 
-            text( "Input phone number where you will get verification code for validate registration on LC WAIKIKI page");
+            text("Input phone number where you will get verification code for validate registration on LC WAIKIKI page");
+
             signupPage.inputPhoneNumber();
 
             //Test of check boxes
 
-            text( "Click on checkbox to receive promotions over email that you provided to LC WAIKIKI page\n We actually do not click because it is setup by default.");
+            text("Click on checkbox to receive promotions over email that you provided to LC WAIKIKI page\n We actually do not click because it is setup by default.");
 
 
-            text( "click on checkbox to receive promotion over sms to a number that you provided to LC WAIKIKI page");
+            text("click on checkbox to receive promotion over sms to a number that you provided to LC WAIKIKI page");
+
             signupPage.smsCheckBoxInfo();
 
-            text( "Click on the checkbox to accept general terms and conditions of LC WAIKIKI page");
+            text("Click on the checkbox to accept general terms and conditions of LC WAIKIKI page");
+
             signupPage.generalConditionsCheckBox();
 
-            signupPage.notABot();
+            text("Sleep time to slow down selenium so reCAPTCHA think that human is filing out a form ");
+            sleepForReCAPTCHA();
 
-            text( "Click on the button Otvorite nalog");
-            signupPage.confirmRegistrationButton();
+//            text("Click on the checkbox of reCAPTCHA  of LC WAIKIKI page");
+//            signupPage.notABot();
+//
+//            text("Click on the button Otvorite nalog");
+//            signupPage.confirmRegistrationButton();
 
-            //Waiting for verification code and WE NEED TO ENTER IT MANUALY BECAUSE IT IS COMING TO PHONE AND IT IS RANDOM
+            text( "Input verification code that you get over mobile that you provide to LC WAIKIKI ");
+            signupPage.verificationCodeBox();
 
-            text( "Entering verification code");
-            signupPage.verificationCode();
-
-            text( "Confirming verification code");
+            text( "Confirmation of verification code and finishing registration");
+            sleepForCode();
             signupPage.verificationCodeConfirm();
 
-            text( "User is registered successfully and can go to shopping by clicking button Zapocnite kupovinu");
-            signupPage.startShopping();
 
+        }
+        finally
 
-        } finally {
+        {
 
-            // driver.quit();
+            //driver.quit();
 
         }
 
     }
 
 }
+
