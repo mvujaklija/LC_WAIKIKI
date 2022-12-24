@@ -40,11 +40,11 @@ public class SocialMedia {
      * THIS Method redirect user to Facebook page of LC WAIKIKI
      */
 
-    public void testFacebookButton() {
+    public void testFacebookButton( ) {
 
-        assert facebookButton.isDisplayed() : "Facebook button is not present. Expected to be there";
+        assert facebookButton.isDisplayed( ) : "Facebook button is not present. Expected to be there";
 
-        facebookButton.click();
+        facebookButton.click( );
 
     }
 
@@ -52,11 +52,11 @@ public class SocialMedia {
      * THIS Method redirect user to LinkedIn page of LC WAIKIKI
      */
 
-    public void testLinkedInButton() {
+    public void testLinkedInButton( ) {
 
-        assert linkedInButton.isDisplayed() : "LinkedIn button is not present. Expected to be there";
+        assert linkedInButton.isDisplayed( ) : "LinkedIn button is not present. Expected to be there";
 
-        linkedInButton.click();
+        linkedInButton.click( );
 
     }
 
@@ -64,11 +64,11 @@ public class SocialMedia {
      * THIS Method redirect user to Pinterest page of LC WAIKIKI
      */
 
-    public void testPinterestButton() {
+    public void testPinterestButton( ) {
 
-        assert pinterestButton.isDisplayed() : "LinkedIn button is not present. Expected to be there";
+        assert pinterestButton.isDisplayed( ) : "LinkedIn button is not present. Expected to be there";
 
-        pinterestButton.click();
+        pinterestButton.click( );
 
     }
 
@@ -76,18 +76,13 @@ public class SocialMedia {
      * THIS Method redirect user to Instagram page of LC WAIKIKI
      */
 
-    public void testInstagramButton() {
+    public void testInstagramButton( ) {
 
-        assert instagramButton.isDisplayed() : "LinkedIn button is not present. Expected to be there";
+        assert instagramButton.isDisplayed( ) : "LinkedIn button is not present. Expected to be there";
 
-        instagramButton.click();
-
-    }
-
-    /**
-     * THIS Method is for printing the text
-     */
-    public static void text(String txt) { System.out.println(txt);
+        instagramButton.click( );
 
     }
+
+
 }

@@ -41,8 +41,11 @@ public class SignupPage {
     @FindBy (xpath =  "//span/following-sibling::input[@id='RegisterFormView_ActivationCode']")
     WebElement smsCodeBox;
 
-    @FindBy ( xpath =  "//a[@class='button bc-blue register-button-link submit-button']" )
+    @FindBy ( xpath =  "//script/following-sibling::a[@class='button bc-blue register-button-link submit-button']" )
     WebElement confirmVerificationCode;
+
+    @FindBy( xpath = "//p [ @class = 'urs-first']" )
+    WebElement headerText;
 
     //Invoking Chrome driver
 
@@ -63,7 +66,7 @@ public class SignupPage {
      * THIS Method give user options for signup and sign in on page of LC WAIKIKI
      */
 
-    public void choseProfileIcon() {
+    public void choseProfileIcon( ) {
 
         assert profileIcon.isDisplayed( ) : "Profile icon is not present. Expected to be there";
 
@@ -150,15 +153,14 @@ public class SignupPage {
 //
 //    }
 //
-//    /**
-//     * THIS Method confirms entered data and submit user data to page of LC WAIKIKI
-//     */
-//
-//    public void confirmRegistrationButton( ) {
-//
-//        openAcount.click( );
-//    }
+    /**
+     * THIS Method confirms entered data and submit user data to page of LC WAIKIKI
+     */
 
+    public void confirmRegistrationButton( ) {
+
+        openAcount.click( );
+    }
 
     /**
      * THIS Method input select verification code box that user get on phone number provided to LC WAIKIKI
@@ -170,7 +172,6 @@ public class SignupPage {
 
     }
 
-
     /**
      * THIS Method click on the button Potvrdi to send verification code that user get on provided phone number to LC WAIKIKI
      */
@@ -180,8 +181,15 @@ public class SignupPage {
         confirmVerificationCode.click();
     }
 
+    /**
+     * THIS Method  verify that user is sign up and have new account on LC WAIKIKI
+     */
 
+    public String getHeaderText() {
 
+        String actualText = headerText.getText();
+        return  actualText;
 
+    }
 
 }

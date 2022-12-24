@@ -87,13 +87,14 @@ public class signUpTestTry extends BaseTest{
             signupPage.generalConditionsCheckBox();
 
             text("Sleep time to slow down selenium so reCAPTCHA think that human is filing out a form ");
-            sleepForReCAPTCHA();
+
 
 //            text("Click on the checkbox of reCAPTCHA  of LC WAIKIKI page");
 //            signupPage.notABot();
 //
-//            text("Click on the button Otvorite nalog");
-//            signupPage.confirmRegistrationButton();
+            text("Click on the button Otvorite nalog");
+            signupPage.confirmRegistrationButton();
+
 
             text( "Input verification code that you get over mobile that you provide to LC WAIKIKI ");
             signupPage.verificationCodeBox();
@@ -103,12 +104,13 @@ public class signUpTestTry extends BaseTest{
             signupPage.verificationCodeConfirm();
 
 
+
         }
         finally
 
         {
 
-            //driver.quit();
+            driver.quit();
 
         }
 

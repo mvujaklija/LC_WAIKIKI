@@ -32,7 +32,7 @@ public class BaseTest {
         }
     }
 
-    public void sleepForCode () {
+    public void sleepForAll() {
         try {
             Thread.sleep(5000);
         } catch (Exception e) {
@@ -40,9 +40,17 @@ public class BaseTest {
         }
     }
 
-    public void sleepForReCAPTCHA () {
+    public void sleepForCode () {
         try {
             Thread.sleep(60000);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void sleepForReCAPTCHA () {
+        try {
+            Thread.sleep(16000);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

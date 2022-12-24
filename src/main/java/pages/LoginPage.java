@@ -6,7 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class LoginPage {
 
     //Looking for web elements
@@ -14,29 +13,30 @@ public class LoginPage {
     @FindBy( xpath = "//i [ @class = 'header-profile-icon' ]" )
     WebElement profileIcon;
 
-    @FindBy( xpath = "//*[@class='dropdown-menu'] //a[@class='dd-button blue'][normalize-space()='Prijava']" )
+    @FindBy( xpath = "//a [ @href = 'https://www.lcwaikiki.rs/sr-RS/RS/login' ] " )
     WebElement signInButton;
 
-    @FindBy( xpath = "//input[@id='LoginEmail']" )
+    @FindBy( xpath = "//input [ @id='LoginEmail' ]" )
     WebElement inputEmail;
 
-    @FindBy( xpath = "//input[@id='Password']" )
+    @FindBy( xpath = "//input [ @id='Password' ]" )
     WebElement inputPassword;
 
-    @FindBy( xpath = "//a[@id='loginLink'][@class='button bc-blue login-button-link']" )
+    @FindBy( xpath = "//a [ @id='loginLink' ] [ @class='button bc-blue login-button-link' ]" )
     WebElement signIn;
 
     //Invoking Chrome driver
 
     public ChromeDriver driver = null;
 
-
     //Constructor
 
-    public LoginPage(ChromeDriver driver) {
+    public LoginPage ( ChromeDriver driver ) {
 
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        driver.get ( Strings.FIRST_PAGE_URL );
+        PageFactory.initElements ( driver , this );
+
 
     }
 
@@ -46,54 +46,41 @@ public class LoginPage {
      * THIS Method give user options for signup and sign in on page of LC WAIKIKI
      */
 
-    public void choseProfileIcon() {
+    public void choseProfileIcon( ) {
 
-        assert profileIcon.isDisplayed( ) : "Profile icon is not present. Expected to be there";
-
-        Actions action = new Actions(driver);
-        action.moveToElement(profileIcon).perform();
+        Actions action = new Actions( driver );
+        action.moveToElement( profileIcon );
 
     }
 
     /**
-     * THIS Method redirects user to signup page of LC WAIKIKI
+     * THIS Method redirects user to sign in page of LC WAIKIKI
      */
 
-    public void choseSignIpButton( ) {
+    public void choseSignInButton( ) {
 
         signInButton.click( );
 
     }
 
     /**
-     * THIS Method input user email to signup page of LC WAIKIKI
+     * THIS Method input user email and password on signup page of LC WAIKIKI
      */
 
-    public void inputEmail( ) {
+    public void loginUser(String email, String password ) {
 
-        inputEmail.click( );
-
-        inputEmail.sendKeys( Strings.EMAIL_FOR_SIGNIN_ANA );
-
-    }
-
-    /**
-     * THIS Method input user password to signup page of LC WAIKIKI
-     */
-
-    public void inputPassword( ) {
-
-        inputPassword.click( );
-
-        inputPassword.sendKeys( Strings.PASSWORD_FOR_SIGNIN_ANA );
+        inputEmail.click ( );
+        assert inputEmail.isDisplayed( ) : "Input email field is not present. Expected to be there";
+        inputEmail.sendKeys ( email );
+        assert inputPassword.isDisplayed( ) : "Input password field is not present. Expected to be there";
+        inputPassword.click ( );
+        inputPassword.sendKeys ( password );
+        assert signIn.isDisplayed( ) : "Prijava button is not present. Expected to be there";
+        signIn.click ( );
 
     }
-
-    public void signIn( ) {
-
-        signIn.click();
-
-    }
-
 
 }
+
+
+
