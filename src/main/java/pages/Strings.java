@@ -22,9 +22,9 @@ public class Strings {
 
     //Register credentials
 
-    public static final String EMAIL_FOR_SIGNUP = "mvujaklija1982.1@gmail.com";
+    public static final String EMAIL_FOR_SIGNUP = "riddlerbg@gmail.com";
     public static final String PASSWORD_FOR_SIGNUP = "Lukicamukica2018+@";
-    public static final String PHONE_NUMBER_FOR_SIGNUP = "637561666";
+    public static final String PHONE_NUMBER_FOR_SIGNUP = "63561666";
     public static final String VERIFICATION_CODE = "20135";
 
     //Text on web page
