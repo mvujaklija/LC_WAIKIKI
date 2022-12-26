@@ -55,7 +55,7 @@ public class searchBarTest extends BaseTest {
 
         } finally {
 
-            //driver.quit();
+            driver.quit();
 
         }
 

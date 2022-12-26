@@ -59,7 +59,7 @@ public class ShoppingPage1 {
     @FindBy ( xpath = "//*[@id= 'select2-BillingAddressViewModel_PostalCodeId-results']/li")
     WebElement selectPostalCode;
 
-    @FindBy ( xpath = "//textarea[@name='BillingAddressViewModel.Address'][@class='ym-disable-keys']]")
+    @FindBy ( xpath = "//textarea[@name='BillingAddressViewModel.Address'][@class='ym-disable-keys']")
     WebElement billingAddress;
 
     @FindBy ( xpath = "//*[@id = 'BillingAddressViewModel_PhoneNumberWithCountryCode']")

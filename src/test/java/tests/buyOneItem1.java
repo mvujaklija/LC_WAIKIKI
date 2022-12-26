@@ -47,19 +47,19 @@ public class buyOneItem1 extends BaseTest{
 
                 //Adding products to shopping chart and checking the content of shopping chart
 
-                ShoppingPage1 shoppingPage = new ShoppingPage1( driver );
-                shoppingPage.selectSectionKids();
-                shoppingPage.selectOnePyjama();
-                shoppingPage.choseSize();
-                shoppingPage.addToChart();
+                ShoppingPage1 shoppingPage1 = new ShoppingPage1( driver );
+                shoppingPage1.selectSectionKids();
+                shoppingPage1.selectOnePyjama();
+                shoppingPage1.choseSize();
+                shoppingPage1.addToChart();
                 sleep();
-                assert shoppingPage.getNumberFromShoppingChartBadge ( ).equals ( "1" ) : "Wrong number of items. Expected: 1,  Actual   " + shoppingPage.getNumberFromShoppingChartBadge();
-                shoppingPage.shoppingChart();
-                shoppingPage.checkOut();
+                assert shoppingPage1.getNumberFromShoppingChartBadge ( ).equals ( "1" ) : "Wrong number of items. Expected: 1,  Actual   " + shoppingPage1.getNumberFromShoppingChartBadge();
+                shoppingPage1.shoppingChart();
+                shoppingPage1.checkOut();
                 sleep();
-                shoppingPage.deliveryToHomeAddress();
+                shoppingPage1.deliveryToHomeAddress();
                 sleepForAll();
-                shoppingPage.deliveryToHomeAddress1();
+                shoppingPage1.deliveryToHomeAddress1();
 
             }
             finally {
